@@ -17,8 +17,8 @@ int install(std::string path)
     exit(0);
   }
 
-  std::string ign1 = "please move file ";
-  std::string ign2 = " to directory ";
+  std::string ign1 = "pls mv fio ";
+  std::string ign2 = " to dir ";
 
   std::string from = "";
   std::string to = "";
