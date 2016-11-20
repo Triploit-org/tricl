@@ -65,7 +65,7 @@ int install(std::string path)
 
       move(from, to);
     }
-    else if (line.substr(0, ign3.size()))
+    else if (line.substr(0, ign3.size()) == ign3)
     {
       chdir(line.substr(ign3.size(), line.size()).c_str());
     }
