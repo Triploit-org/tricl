@@ -24,6 +24,7 @@ int install(std::string path)
   std::string to = "";
 
   std::string ign3 = "pls goto dir ";
+  std::string ign3 = "say err ";
 
   while(getline(infile, line))
   {
@@ -68,6 +69,15 @@ int install(std::string path)
     else if (line.substr(0, ign3.size()) == ign3)
     {
       chdir(line.substr(ign3.size(), line.size()).c_str());
+    }
+    else if (line.substr(0, ign4.size()) == ign4)
+    {
+      std::cout << line.substr(ign4.size(), line.size()) <<;
+    }
+    else
+    {
+      std::cout << "pkgins.cfg: error: SyntaxError!" << std::endl;
+      exit(0);
     }
   }
 
