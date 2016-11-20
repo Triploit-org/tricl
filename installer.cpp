@@ -44,7 +44,7 @@ int install(std::string path)
       }
       else
       {
-        std::cout << "pkgins.cfg: error: SyntaxError!" << std::endl;
+        std::cout << "pkgins.cfg: error: SyntaxError! FROM" << std::endl;
         exit(0);
       }
 
@@ -60,7 +60,7 @@ int install(std::string path)
       }
       else
       {
-        std::cout << "pkgins.cfg: error: SyntaxError!" << std::endl;
+        std::cout << "pkgins.cfg: error: SyntaxError! TO " << std::endl;
         exit(0);
       }
 
@@ -76,7 +76,7 @@ int install(std::string path)
     }
     else
     {
-      std::cout << "pkgins.cfg: error: SyntaxError!" << std::endl;
+      std::cout << "pkgins.cfg: error: SyntaxError! No Command!" << std::endl;
       exit(0);
     }
   }
