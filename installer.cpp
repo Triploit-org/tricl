@@ -72,7 +72,7 @@ int install(std::string path)
     }
     else if (line.substr(0, ign4.size()) == ign4)
     {
-      std::cout << line.substr(ign4.size(), line.size()) <<;
+      std::cout << line.substr(ign4.size(), line.size()) << std::endl;
     }
     else
     {
