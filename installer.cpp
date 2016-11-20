@@ -25,42 +25,46 @@ int install(std::string path)
 
   while(getline(infile, line))
   {
-    int i;
-    if (line.substr(0, ign1.size()) == ign1)
+    if (!(line.substr(0, 1) == "#"))
     {
-      line = line.substr(ign1.size(), line.size());
-
-      for (i = 0; line[i] != ' '; i++)
+      int i;
+      if (line.substr(0, ign1.size()) == ign1)
       {
-        from = from + line[i];
+        line = line.substr(ign1.size(), line.size());
+
+        for (i = 0; line[i] != ' '; i++)
+        {
+          from = from + line[i];
+        }
+        //std::cout << "FROM >> " << from << std::endl;
+        line = line.substr(i, line.size());
       }
-      //std::cout << "FROM >> " << from << std::endl;
-      line = line.substr(i, line.size());
-    }
-    else
-    {
-      std::cout << "pkgins.cfg: error: SyntaxError!" << std::endl;
-      exit(0);
-    }
-
-    if (line.substr(0, ign2.size()) == ign2)
-    {
-      line = line.substr(ign2.size(), line.size());
-
-      for (i = 0; line[i] != ' ' && i < line.size(); i++)
+      else
       {
-        to = to + line[i];
+        std::cout << "pkgins.cfg: error: SyntaxError!" << std::endl;
+        exit(0);
       }
-      //std::cout << "TO >> " << to << std::endl;
-    }
-    else
-    {
-      std::cout << "pkgins.cfg: error: SyntaxError!" << std::endl;
-      exit(0);
-    }
 
-    move(from, to);
+      if (line.substr(0, ign2.size()) == ign2)
+      {
+        line = line.substr(ign2.size(), line.size());
+
+        for (i = 0; line[i] != ' ' && i < line.size(); i++)
+        {
+          to = to + line[i];
+        }
+        //std::cout << "TO >> " << to << std::endl;
+      }
+      else
+      {
+        std::cout << "pkgins.cfg: error: SyntaxError!" << std::endl;
+        exit(0);
+      }
+
+      move(from, to);
+    }
   }
+
 }
 
 void move(std::string from, std::string to)
