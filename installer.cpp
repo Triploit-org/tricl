@@ -23,6 +23,8 @@ int install(std::string path)
   std::string from = "";
   std::string to = "";
 
+  std::string ign3 = "pls goto dir ";
+
   while(getline(infile, line))
   {
     if (!(line.substr(0, 1) == "#"))
@@ -62,6 +64,10 @@ int install(std::string path)
       }
 
       move(from, to);
+    }
+    else if (line.substr(0, ign3.size()))
+    {
+      chdir(line.substr(ign3.size(), line.size()).c_str());
     }
   }
 
