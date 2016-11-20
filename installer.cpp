@@ -28,10 +28,8 @@ int install(std::string path)
 
   while(getline(infile, line))
   {
-    if (!(line.substr(0, 1) == "#"))
-    {
-      int i;
-      if (line.substr(0, ign1.size()) == ign1)
+     int i;
+     if (line.substr(0, ign1.size()) == ign1)
       {
         line = line.substr(ign1.size(), line.size());
 
@@ -41,10 +39,6 @@ int install(std::string path)
         }
         //std::cout << "FROM >> " << from << std::endl;
         line = line.substr(i, line.size());
-      }
-      else
-      {
-        std::cout << "pkgins.cfg: error: SyntaxError! FROM" << std::endl;
       }
 
       if (line.substr(0, ign2.size()) == ign2)
@@ -57,26 +51,19 @@ int install(std::string path)
         }
         //std::cout << "TO >> " << to << std::endl;
       }
-      else
-      {
-        std::cout << "pkgins.cfg: error: SyntaxError! TO " << std::endl;
-      }
 
-      move(from, to);
-    }
-    else if (line.substr(0, ign3.size()) == ign3)
+    if (line.substr(0, ign3.size()) == ign3)
     {
       chdir(line.substr(ign3.size(), line.size()).c_str());
     }
-    else if (line.substr(0, ign4.size()) == ign4)
+
+    if (line.substr(0, ign4.size()) == ign4)
     {
       std::cout << line.substr(ign4.size(), line.size()) << std::endl;
+      return 0;
     }
-    else
-    {
-      std::cout << "pkgins.cfg: error: SyntaxError! No Command!" << std::endl;
-      exit(0);
-    }
+
+    move(from, to);
   }
 
 }
@@ -84,5 +71,6 @@ int install(std::string path)
 void move(std::string from, std::string to)
 {
   std::string cmd = "mv "+from+" "+to;
+  std::cout << ">> " << cmd << std::endl;
   system(cmd.c_str());
 }
