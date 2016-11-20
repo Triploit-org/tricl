@@ -1,5 +1,5 @@
 all:
-	g++ -o tricl tricl.cpp
+	g++ -fpermissive -o tricl tricl.cpp
 
 clean:
 	rm tricl

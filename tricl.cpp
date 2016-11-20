@@ -5,9 +5,7 @@
 #include <cstring>
 #include <random>
 #include <fstream>
-
-#define min 1
-#define max 3
+#include "installer.cpp"
 
 int main(int argc, char* argv[])
 {
@@ -25,8 +23,8 @@ int main(int argc, char* argv[])
       std::cout << ">> Finished!" << std::endl;
 
       std::cout << ">> Install..." << std::endl;
-      install(argv[1]);
-      std::cout << "Finished!" << std::endl;
+      install(argv[2]);
+      std::cout << ">> Finished!" << std::endl;
 
       return 0;
     }
