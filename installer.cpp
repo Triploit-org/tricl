@@ -45,7 +45,6 @@ int install(std::string path)
       else
       {
         std::cout << "pkgins.cfg: error: SyntaxError! FROM" << std::endl;
-        exit(0);
       }
 
       if (line.substr(0, ign2.size()) == ign2)
@@ -61,7 +60,6 @@ int install(std::string path)
       else
       {
         std::cout << "pkgins.cfg: error: SyntaxError! TO " << std::endl;
-        exit(0);
       }
 
       move(from, to);
