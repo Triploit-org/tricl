@@ -24,7 +24,7 @@ int install(std::string path)
   std::string to = "";
 
   std::string ign3 = "pls goto dir ";
-  std::string ign3 = "say err ";
+  std::string ign4 = "say err ";
 
   while(getline(infile, line))
   {
