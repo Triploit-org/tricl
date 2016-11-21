@@ -2,11 +2,35 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <fstream>
+#include <cstring>
+#include <pwd.h>
 
 void move(std::string from, std::string to);
 
+const char *getUserName()
+{
+  uid_t uid = geteuid();
+  struct passwd *pw = getpwuid(uid);
+  if (pw)
+  {
+    return pw->pw_name;
+  }
+
+  return "";
+}
+
 int install(std::string path)
 {
+  std::string user;
+  char* u = getUserName();
+  user = u;
+
+  if (user != "root")
+  {
+    std::cout << "Warnung: Programm muss als Root ausgefuehrt werden!" << std::endl;
+    //exit(0);
+  }
+
   chdir(path.c_str());
   std::ifstream infile = std::ifstream("pkgins.cfg");
   std::string line;
@@ -64,13 +88,26 @@ int install(std::string path)
     }
 
     move(from, to);
+
+    line = "";
+    from = "";
+    to = "";
   }
 
+  std::string cmd;
+  cmd = "rm -rf "+path;
+  system(cmd.c_str());
 }
 
 void move(std::string from, std::string to)
 {
   std::string cmd = "mv "+from+" "+to;
   std::cout << ">> " << cmd << std::endl;
+  system(cmd.c_str());
+}
+
+void rm(std::string to)
+{
+  std::string cmd = "rm "+to;
   system(cmd.c_str());
 }
