@@ -20,3 +20,34 @@ Lasst uns doch einfach mal die neue Ny++ Version herunterladen:
     ./tricl install ny-6
 
 Damit wird dieses Paket heruntergeladen und in einem extra Ordner gespeichert.
+
+## Ein eigenes Paket erstellen
+
+Um ein eigenes Paket zu erstellen, ist ein GitHub-Account nötig. Auf diesem Account legt man dann eine Repository an, die das Paket repräsentieren wird.
+
+In der Repo muss im Wurzelverzeichnis eine "pkgins.cfg" enthalten sein, damit eine Installation (und nicht nur ein Download) möglich ist. In dieser Datei wird dann ein LOL-Code ähnlicher Befehl geschrieben, damit der Client weiß, was er zu tun hat:
+
+    pls mv test.txt to dir ~/
+    
+Das ist soweit der Befehl, der die Datei test.txt in das Verzeichnis ~/ verschiebt.
+Um dieses Paket dann mit dem Client herunterzuladen, muss nur ein Argument hinzugefügt werden:
+
+    ./tricl -m <GitHubUser> <Paket>
+    
+Nehmen wir an, ich habe einen GitHub-Account der `musterman` heißt, auf diesem Account erstelle ich eine Repo `hello-world-cpp`. In dieser Repo ist ein Source Code in C++ für ein Hallo Welt enthalten und eine Binädatei die `Hallo Welt` auf der Konsole ausgibt.
+So sieht die Repo aus:
+    
+    hello-world-cpp
+    |
+    |-> helloworld.cpp
+    --> pkgins.cfg
+
+Die pkgins.cfg:
+
+    pls mv helloworld.cpp to dir ~/
+    
+Hier ist dann der Befehl:
+
+    ./tricl -m musterman hello-world-cpp
+    
+Dann wird in der Repo `hello-world-cpp` des User `musterman` nach der Config geschaut und sie wird installiert.
