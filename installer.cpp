@@ -3,9 +3,9 @@
 #include <cstdlib>
 #include <fstream>
 
-void move(std::string from, std::string to);
+void move(std::string from, std::string to, bool ins);
 
-int install(std::string path)
+int install(std::string path, bool ins)
 {
   chdir(path.c_str());
   std::ifstream infile = std::ifstream("pkgins.cfg");
@@ -63,14 +63,23 @@ int install(std::string path)
       return 0;
     }
 
-    move(from, to);
+    move(from, to, ins);
   }
 
 }
 
 void move(std::string from, std::string to)
 {
-  std::string cmd = "mv "+from+" "+to;
-  std::cout << ">> " << cmd << std::endl;
-  system(cmd.c_str());
+  if (ins == false)
+  {
+    std::string cmd = "rm -rf "+from;
+    std::cout << ">> " << cmd << std::endl;
+    system(cmd.c_str());
+  }
+  else
+  {
+    std::string cmd = "mv "+from+" "+to;
+    std::cout << ">> " << cmd << std::endl;
+    system(cmd.c_str());
+  }
 }
