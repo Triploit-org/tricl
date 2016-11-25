@@ -5,7 +5,7 @@
 #include <cstring>
 #include <pwd.h>
 
-void move(std::string from, std::string to);
+void move(std::string from, std::string to, bool ins);
 
 const char *getUserName()
 {
@@ -19,7 +19,7 @@ const char *getUserName()
   return "";
 }
 
-int install(std::string path)
+int install(std::string path, bool ins)
 {
   std::string user;
   char* u = getUserName();
@@ -53,6 +53,8 @@ int install(std::string path)
   while(getline(infile, line))
   {
      int i;
+     //std::cout << "LINE >> " << line << std::endl;
+
      if (line.substr(0, ign1.size()) == ign1)
       {
         line = line.substr(ign1.size(), line.size());
@@ -61,6 +63,7 @@ int install(std::string path)
         {
           from = from + line[i];
         }
+
         //std::cout << "FROM >> " << from << std::endl;
         line = line.substr(i, line.size());
       }
@@ -87,23 +90,43 @@ int install(std::string path)
       return 0;
     }
 
-    move(from, to);
+    move(from, to, ins);
 
     line = "";
     from = "";
     to = "";
   }
 
-  std::string cmd;
-  cmd = "rm -rf "+path;
-  system(cmd.c_str());
+  //std::string cmd;
+  chdir("..");
+
+  path = path + "/";
+  std::cout << "REMOVE PATH: " << path << std::endl;
+  remove(path.c_str());
 }
 
-void move(std::string from, std::string to)
+void move(std::string from, std::string to, bool ins)
 {
-  std::string cmd = "mv "+from+" "+to;
-  std::cout << ">> " << cmd << std::endl;
-  system(cmd.c_str());
+  if (ins == false)
+  {
+    std::string cmd = "rm -rf "+to;
+    std::cout << ">> \"" << cmd << "\"" << std::endl;
+
+    if (cmd != "rm -rf /bin/" && cmd != "rm -rf /bin" && cmd != "rm -rf /usr/bin" && cmd != "rm -rf /usr/bin/" && cmd != "rm -rf /usr" && cmd != "rm -rf /usr/")
+    {
+      system(cmd.c_str());
+    }
+    else
+    {
+      std::cout << "Error: Defektes/Fehlerhaftes Paket! Der Binärordner darf nicht gelöscht werden!" << std::endl;
+    }
+  }
+  else
+  {
+    std::string cmd = "mv "+from+" "+to;
+    std::cout << ">> " << cmd << std::endl;
+    system(cmd.c_str());
+  }
 }
 
 void rm(std::string to)
