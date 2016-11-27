@@ -2,7 +2,7 @@
 
 Der Triploit Client kann dazu benutzt werden um Programme aus der Repository der Organisation zu installieren.
 
-**Ich übernehme keinerlei Verantwortung für schäden die durch die Installation oder Deinstallation eines Programmes mithilfe des Triploit Clients entstehen!**
+**Ich übernehme keinerlei Verantwortung für Schäden die durch die Installation oder Deinstallation eines Programmes mithilfe des Triploit Clients entstehen!**
 
 ## Client kompilieren
 Es reicht ein einfaches
