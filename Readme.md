@@ -2,6 +2,8 @@
 
 Der Triploit Client kann dazu benutzt werden um Programme aus der Repository der Organisation zu installieren.
 
+**Ich übernehme keinerlei Verantwortung für Schäden die durch die Installation oder Deinstallation eines Programmes mithilfe des Triploit Clients entstehen!**
+
 ## Client kompilieren
 Es reicht ein einfaches
 
@@ -27,9 +29,9 @@ Um ein eigenes Paket zu erstellen, ist ein GitHub-Account nötig. Auf diesem Acc
 
 In der Repo muss im Wurzelverzeichnis eine "pkgins.cfg" enthalten sein, damit eine Installation (und nicht nur ein Download) möglich ist. In dieser Datei wird dann ein LOL-Code ähnlicher Befehl geschrieben, damit der Client weiß, was er zu tun hat:
 
-    pls mv test.txt to dir ~/
+    pls mv test.txt to dir ~/test.txt
     
-Das ist soweit der Befehl, der die Datei test.txt in das Verzeichnis ~/ verschiebt.
+Das ist soweit der Befehl, der die Datei test.txt in das Verzeichnis ~/ verschiebt. Es ist ungemein wichtig, das angegeben wird, wie die Datei heißt und nicht nur der Ordner, wo die Datei hinverschoben werden soll (also nicht ~/ sondern ~/test.txt). **Denn sonnst wird beim löschen des Paketes der Ordner ~/ gelöscht!**
 Um dieses Paket dann mit dem Client herunterzuladen, muss nur ein Argument hinzugefügt werden:
 
     ./tricl -m <GitHubUser> <Paket>
@@ -44,7 +46,7 @@ So sieht die Repo aus:
 
 Die pkgins.cfg:
 
-    pls mv helloworld.cpp to dir ~/
+    pls mv helloworld.cpp to dir ~/helloworld.cpp
     
 Hier ist dann der Befehl:
 
