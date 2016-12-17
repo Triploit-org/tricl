@@ -125,6 +125,7 @@ void move(std::string from, std::string to, bool ins)
     std::string cmd = "mv "+from+" "+to;
     std::cout << ">> " << cmd << std::endl;
     system(cmd.c_str());
+    system(std::string("chmod +x "+to).c_str());
   }
 }
 
