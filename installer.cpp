@@ -31,13 +31,13 @@ int install(std::string path, bool ins)
     //exit(0);
   }
 
-  chdir(path.c_str());
-  std::ifstream infile = std::ifstream("pkgins.cfg");
+  chdir(std::string(path + "/").c_str());
+  std::ifstream infile = std::ifstream(std::string(path + "/"+"pkgins.cfg"));
   std::string line;
 
   if (!infile.is_open())
   {
-    std::cout << path <<": error: Das Paket konnte nicht auf dem System installiert werden, da die Datei pkgins.cfg in dem Paket fehlt!" << std::endl;
+    std::cout << std::string(path + "/"+"pkgins.cfg") <<": error: Das Paket konnte nicht auf dem System installiert werden, da die Datei pkgins.cfg in dem Paket fehlt!" << std::endl;
     exit(0);
   }
 
@@ -100,7 +100,6 @@ int install(std::string path, bool ins)
   //std::string cmd;
   chdir("..");
 
-  path = path + "/";
   std::cout << "REMOVE PATH: " << path << std::endl;
   remove(path.c_str());
 }
@@ -118,7 +117,7 @@ void move(std::string from, std::string to, bool ins)
     }
     else
     {
-      std::cout << "Error: Defektes/Fehlerhaftes Paket! Der Binärordner darf nicht gelöscht werden!" << std::endl;
+      std::cout << "Error: Defektes/Fehlerhaftes Paket! Der Bin-Ordner darf nicht gelöscht werden!" << std::endl;
     }
   }
   else
