@@ -56,7 +56,7 @@ int install(std::string path, bool ins)
      //std::cout << "LINE >> " << line << std::endl;
 
      if (line.substr(0, ign1.size()) == ign1)
-      {
+     {
         line = line.substr(ign1.size(), line.size());
 
         for (i = 0; line[i] != ' '; i++)
@@ -88,6 +88,13 @@ int install(std::string path, bool ins)
     {
       std::cout << line.substr(ign4.size(), line.size()) << std::endl;
       return 0;
+    }
+
+    if (line.substr(0, std::string("make").size()) == "make")
+    {
+      system("cmake CMakeLists.txt");
+      system("make");
+      continue;
     }
 
     move(from, to, ins);
