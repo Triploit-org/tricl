@@ -92,6 +92,7 @@ int install(std::string path, bool ins)
 
     if (line.substr(0, std::string("make").size()) == "make")
     {
+      std::cout << ">> Make (if Makefile exists)..." << std::endl;
       system("cmake CMakeLists.txt");
       system("make");
       continue;
