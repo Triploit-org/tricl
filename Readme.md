@@ -1,11 +1,33 @@
-# Triploit Client - Nur für Linux
+
+**DE Ich übernehme keinerlei Verantwortung für Schäden die durch die Installation oder Deinstallation eines Programmes mithilfe des Triploit Clients entstehen!**  
+  
+**EN I do not take any responsibility for damage caused by installing or uninstalling a program using the Triploit Client!**
+
+# EN Triploit Client - Only for Linux users
+
+To install the Triploit Client, clone this repository and run the command
+  
+    make all
+in the project directory.
+Then run this command:
+
+    sudo ./tricl install tricl
+then you can use the Triploit Client from Console :)
+
+## Download a Package
+
+To download and install a Package from Triploit Repository, run this command:
+
+    sudo tricl install <package>
+    
+For example:
+
+    sudo tricl install basm
+This example installs the BASM Assembly Language.
+
+# DE Triploit Client - Nur für Linux
 
 Der Triploit Client kann dazu benutzt werden um Programme aus der Repository der Organisation zu installieren.
-
-**Ich übernehme keinerlei Verantwortung für Schäden die durch die Installation oder Deinstallation eines Programmes mithilfe des Triploit Clients entstehen!**  
-  
-**I do not take any responsibility for damage caused by installing or uninstalling a program using the Triploit Client!**
-
 
 ## Client kompilieren
 Es reicht ein einfaches
